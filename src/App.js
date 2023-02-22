@@ -16,6 +16,7 @@ import "../src/assets/css/style.css"
 import {HomePage} from "./components/Pages/HomePage"
 import { Route, Routes } from 'react-router-dom';
 import { SingleTravel } from './components/SingleTravel/SingleTravel';
+import { Footer } from './components/Footer/Footer';
 
 
 
@@ -28,7 +29,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/travel/:id" element={<SingleTravel/>}/>
+        <Route path="/:title" element={<h1>bu yerda to'lov tizimi bo'ladi</h1>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }

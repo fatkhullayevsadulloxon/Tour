@@ -1,1 +1,5 @@
-export 
+@media (max-width: 1013px) {
+    .single-flex{
+        display: block !important;
+    }
+}

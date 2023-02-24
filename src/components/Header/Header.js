@@ -2,7 +2,7 @@ import "./Header.css"
 import rasm1 from "../../assets/images/1.png"
 import rasm2 from "../../assets/images/2.png"
 import rasm3 from "../../assets/images/3.png"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 export const Header = () => {
     return (
@@ -30,7 +30,9 @@ export const Header = () => {
                                 <div class="full">
                                     <div class="center-desk">
                                         <div class="logo">
-                                            <h1 class="logo__heading">Besh tour</h1>
+                                          <Link to="/">
+                                                <h1 class="logo__heading">Besh tour</h1>
+                                          </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +61,7 @@ export const Header = () => {
                                                     isActive
                                                         ? "active d-inline-block"
                                                         : "text-decoration-none"
-                                                } to="/contact" href="#contact">Bog'lanish</NavLink></li>
+                                                } to="/sign-up" href="#contact">Mening hisobim</NavLink></li>
                                             </ul>
                                         </nav>
                                     </div>

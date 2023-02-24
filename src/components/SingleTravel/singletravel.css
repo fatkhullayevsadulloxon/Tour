@@ -3,3 +3,20 @@
         display: block !important;
     }
 }
+
+
+.start-btn{
+    background-color: #13aba6;
+    padding: 12px 19px;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid transparent;
+        transition: all 0.4s;
+}
+
+.start-btn:hover{
+    background-color: transparent;
+    border: 2px solid #13aba6;
+    transition: all 0.4s;
+    color: #13aba6;
+}

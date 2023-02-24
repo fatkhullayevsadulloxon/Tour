@@ -9,7 +9,7 @@ export const SingleTravel = () => {
     const [data, setData] = useState({})
 
     useEffect(() => {
-        fetch(`https://dummyjson.com/products/${id}`)
+        fetch(`https://travel.iprogrammer.uz/services/get/${id}`)
             .then(res => res.json())
             .then((data) => setData(data))
             .catch(err => console.log(err))
@@ -19,18 +19,18 @@ export const SingleTravel = () => {
     return (
         <>
             <div className="single">
-                <div className="container single-flex d-flex align-items-center justify-content-around">
-                    <img src={data.thumbnail} alt="" />
+                <div className="container mt-5 single-flex d-flex align-items-center justify-content-around">
+                    <img src={data.img} alt="" width={400} height={400}/>
                     <div className="single__right bg-light">
                         <div className="m-5">
-                            <h1>✅Nomi: <strong>{data.title}</strong></h1>
+                            <h1>✅Nomi: <strong>{data.name}</strong></h1>
                             <p>✅Tavsifi: <strong>{data.description}</strong></p>
                             <p>✅Narxi: <strong>{data.price}$</strong></p>
-                            <p>✅Reytingi: <strong>{data.rating}</strong> </p>
-                            <p>✅Kategoriya: <strong>{data.category}</strong></p> <br /><br />
                             <p>✅To'lov naqd pul yoki web sahifamizning o'zidan o'tkazib berishingiz mumkin</p>
                             <p>❗❗Narxlar o'zgarishi mumkin</p>
-                            <Link to={`/${data.title}`}>Davom etish</Link>
+                          <div className="mt-5">
+                                <Link className="start-btn" to={`/${data.name}`}>Davom etish</Link>
+                          </div>
                         </div>
                     </div>
                 </div> <br /> <br />

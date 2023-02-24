@@ -7,9 +7,13 @@ export const Travel = () => {
     const [ travel, setTravel ] = useState({})
 
     useEffect(() => {
-        fetch("https://dummyjson.com/products")
+        fetch("https://travel.iprogrammer.uz/services/all/", {
+            headers: {
+                "Content-type": "application/json",
+            },
+        })
             .then(res => res.json())
-            .then((data) => setTravel(data.products))
+            .then((data) => setTravel(data))
             .catch(err => console.log(err))
 
     }, [])

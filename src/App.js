@@ -17,22 +17,30 @@ import {HomePage} from "./components/Pages/HomePage"
 import { Route, Routes } from 'react-router-dom';
 import { SingleTravel } from './components/SingleTravel/SingleTravel';
 import { Footer } from './components/Footer/Footer';
+import { About } from './components/About/About';
+import { Travel } from './components/Travel/Travel';
+import { SignUp } from './components/SignUp/SignUp';
+import { Login } from './components/Login/Login';
+import { useAuth } from './hook/hook';
+import { PublicPage } from './components/Public/PublicPage';
+import { PrivatePage } from './components/Private/PrivatePage';
 
 
 
 
 
 function App() {
+  const {token} = useAuth()
   return (
+
+    <>
+  {token ? <PrivatePage/> : <PublicPage/>}    
+
+
     <div className="App">
-      <Header/>
-      <Routes>
-        <Route path="/" element={<HomePage/>}/>
-        <Route path="/travel/:id" element={<SingleTravel/>}/>
-        <Route path="/:title" element={<h1>bu yerda to'lov tizimi bo'ladi</h1>}/>
-      </Routes>
-      <Footer/>
+      
     </div>
+    </>
   );
 }
 

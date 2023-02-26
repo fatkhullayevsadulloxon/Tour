@@ -4,6 +4,7 @@ import { Footer } from "../Footer/Footer"
 import { Header } from "../Header/Header"
 import { Login } from "../Login/Login"
 import { HomePage } from "../Pages/HomePage"
+import { Payment } from "../Payment/Payment"
 import { SignUp } from "../SignUp/SignUp"
 import { SingleTravel } from "../SingleTravel/SingleTravel"
 import { Travel } from "../Travel/Travel"
@@ -20,7 +21,8 @@ export const PublicPage = () => {
                 <Route path="/travel" element={<Travel />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/:title" element={<h1>bu yerda to'lov tizimi bo'ladi</h1>} />
+                <Route path="/cabinet" element={<h1>EEE ro'yxatdan o'tsangiz bo'lmaydimi</h1>} />
+                <Route path="/:title" element={<h1>EEE ro'yxatdan o'tsangiz bo'lmaydimi</h1>} />
             </Routes>
             <Footer />
         </>

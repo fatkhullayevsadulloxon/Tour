@@ -28,12 +28,14 @@ export const Login = () => {
             .then((data) => {
                 if (data.auth_token !== undefined) {
                     window.localStorage.setItem("token", data.auth_token)
-                    navigate("/")
+                    navigate("/cabinet")
                     window.location.reload(true)
                 }
             })
             .catch((err) => console.log(err));
+            console.log(setToken);
     }
+    
     return (
         <>
             <div className="register-page">

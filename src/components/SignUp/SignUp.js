@@ -21,17 +21,22 @@ export const SignUp = () => {
         formdata.append("phone", elPhone.current.value)
         formdata.append("password", elPassword.current.value)
 
-
         axios
             .post(
                 "https://travel.iprogrammer.uz/accounts/users/",
                 formdata
             )
             .then((data) => {
-                if (data) {
-                    console.log(data)
+                if (elPhone.current.value >= 9) {
                     navigate('/login')
                     window.location.reload(true)
+                } else if (elPhone.current.value <= 9) {
+                    alert("siz raqam termadingiz")
+                }
+
+                if (data) {
+                    // navigate('/login')
+                    // window.location.reload(true)
                 }
             })
             .catch((err) => console.log(err));
@@ -47,7 +52,7 @@ export const SignUp = () => {
                             <form onSubmit={hanldeForm} className="register__form">
                                 <input ref={elUserName} type="text" placeholder="Username" />
                                 <input ref={elFirstName} type="text" placeholder="First Name" />
-                                <input ref={elPhone} type="number" placeholder="Phone" />
+                                <input ref={elPhone} defaultValue={+998} type="number" placeholder="Phone" />
                                 <input ref={elPassword} type="text" placeholder="Password" />
                                 <div className="text-center pb-5 mt-4">
                                     <button type="submit" className="start-btn">Next step</button>

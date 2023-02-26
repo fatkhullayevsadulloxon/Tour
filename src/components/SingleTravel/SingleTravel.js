@@ -29,7 +29,7 @@ export const SingleTravel = () => {
                             <p>✅To'lov naqd pul yoki web sahifamizning o'zidan o'tkazib berishingiz mumkin</p>
                             <p>❗❗Narxlar o'zgarishi mumkin</p>
                           <div className="mt-5">
-                                <Link className="start-btn" to={`/${data.name}`}>Davom etish</Link>
+                                <Link className="start-btn" to={`travel/${data.id}`}>Davom etish</Link>
                           </div>
                         </div>
                     </div>

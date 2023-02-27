@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 
+
 export const TravelCard = ({item}) => {
+
     return  (
         <>
                 <Link to={`travel/${item.id}`} class="col-xl-3 col-lg-3 col-md-6 col-sm-12">

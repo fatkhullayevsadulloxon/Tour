@@ -28,6 +28,7 @@ export const PrivatePage = () => {
                 <Route path="/order" element={<h1>Bu yerda sizning buyurtmalaringiz bo'ladi</h1>} />
                 <Route path="/cabinet" element={<Cabinet/>} />
                 <Route path="/travel/:id/travel/:id" element={<Payment/>} />
+                <Route path="/travel/travel/:id/travel/:id" element={<Payment/>} />
                 <Route path="/payme" element={<Payme/>} />
             </Routes>
             <Footer />

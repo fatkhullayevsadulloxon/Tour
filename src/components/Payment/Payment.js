@@ -77,13 +77,10 @@ export const Payment = () => {
                     window.location.reload(true)
             }
 
-        axios.get(`https://travel.iprogrammer.uz/payme/check/${localData}`, {
-            headers: {
-                "Authorization": "token " + window.localStorage.getItem("token",)
-            }
-                .then((data) => console.log(data.res))
+        axios.post(`https://travel.iprogrammer.uz/payme/check/${localData}/`)
+                .then((data) => console.log(data.data.res))
                 .catch((err) => console.log(err))
-        })
+        
 
         axios
             .post(
@@ -94,14 +91,22 @@ export const Payment = () => {
                 } 
                  )
             .then((data) => {
-                if (data) {
-                    console.log(data)
-                    // navigate('/cabinet')
-                    // window.location.reload(true)
-                }
+               
             })
             .catch((err) => console.log(err));
-    }
+            if(elUserCount.current.value === ""){
+                alert("Iltimos yo'lovchi sonini kiriting")
+            } else if(elFirstName.current.value === "") {
+                alert("Iltimos ismingizni kiriting")
+            } else if (elLastName.current.value === "") {
+                alert("Iltimos familyangizni kiriting")
+            } else if (elAddress.current.value === "") {
+                alert("Iltimos manzilingizni kiriting")
+            } else if (elPhone.current.value < 11) {
+                alert("Telefon raqam to'liq kiritilmadi")
+            } else if (elDate.current.value === "") {
+                alert("Iltimos tug'ilgan sanangizni kiriting")
+    }}
 
     return (
         <>
@@ -115,14 +120,13 @@ export const Payment = () => {
                                         <div className="p-5 ms-5 me-5">
                                             <h3 className="text-center pt-5">Buyurtma qilish</h3>
                                             <form className="register__form">
-                                                <input defaultValue={data.id} ref={elService} required type="number" placeholder="service" />
+                                                <input defaultValue={data.id} ref={elService} required type="hidden" placeholder="service" />
                                                 <input ref={elUserCount} required type="number" placeholder="Yo'lovchi soni" />
                                                 <select ref={elPayment} className="select">
                                                     <option value="Naqd">Naqd To'lov</option>
                                                     <option value="Payme">Payme</option>
                                                 </select>
-                                                <p>paymedan to'lasangiz buyurtmangiz narxi👇</p>
-                                                <input defaultValue={data.price} ref={elPaymeCheck} required type="number" placeholder="Paymedan to'lash uchun narx" />
+                                                <input defaultValue={data.service} ref={elPaymeCheck} required type="hidden" placeholder="Paymedan to'lash uchun narx" />
                                             </form>
                                         </div>
                                     </div>
@@ -138,7 +142,7 @@ export const Payment = () => {
                                                 <input ref={elFirstName} required type="text" placeholder="Ismingiz" />
                                                 <input ref={elLastName} required type="text" placeholder="Familyangiz" />
                                                 <input ref={elAddress} required type="text" placeholder="Address" />
-                                                <input ref={elPhone} required type="number" placeholder="Phone" />
+                                                <input defaultValue={+998} ref={elPhone} required type="number" placeholder="Phone" />
                                                 <input ref={elEmail} type="email" placeholder="Email" />
                                                 <input ref={elDate} required type="date" placeholder="Tu'gilgan sana" />
                                                 <select ref={elGender} className="select">

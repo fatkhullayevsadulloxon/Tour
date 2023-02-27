@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Cabinet } from "../Cabinet/Cabinet"
 import { TravelCard } from "../TravelCard/TravelCard"
 import "./travel.css"
 
@@ -36,6 +37,7 @@ export const Travel = () => {
                         {travel.length && travel.map(e => (
                             <>
                                 <TravelCard key={e.id} item={e}/>
+
                             </>
                         ))}
                     </div>

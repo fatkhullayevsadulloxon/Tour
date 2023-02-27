@@ -27,19 +27,25 @@ export const SignUp = () => {
                 formdata
             )
             .then((data) => {
-                if (elPhone.current.value >= 9) {
+                if (data) {
                     navigate('/login')
                     window.location.reload(true)
-                } else if (elPhone.current.value <= 9) {
-                    alert("siz raqam termadingiz")
-                }
-
-                if (data) {
-                    // navigate('/login')
-                    // window.location.reload(true)
                 }
             })
             .catch((err) => console.log(err));
+
+        if (elUserName.current.value === "") {
+    alert("Iltimos username kiriting")
+        } else if (elFirstName.current.value === "") {
+    alert("Iltimos ism kiriting")
+} else if (elPassword.current.value >= 8) {
+    navigate('/login')
+    window.location.reload(true)
+} else if (elPassword.current.value <= 8) {
+    alert("Parol 8ta raqamdan kam bo'lmasligi zarur")
+} else if (elPhone.current.value < 11){
+    alert("telefon raqam to'liq kiritilmadi")
+}
         }
     return (
         <>

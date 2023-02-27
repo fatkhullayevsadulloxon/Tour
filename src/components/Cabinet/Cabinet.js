@@ -1,24 +1,29 @@
 import axios from "axios"
 import { useEffect, useRef, useState } from "react"
+import { OrderAll } from "../orderAll/OrderAll"
 import "./cabinet.css"
 
-export const Cabinet = () => {
-
-    const [travel, setTravel] = useState({})
+const localId = window.localStorage.getItem("localId")
+export const Cabinet = ({ data }) => {
+    console.log(data);
+    
+    const [travel, setTravel] =  useState({})
     const [me, setMe] = useState({})
+    const [order, setOrder] = useState({})
+    const [servis, setServis] = useState({})
 
-    const elEmail = useRef("")
+
+    const elPhone = useRef("")
     const elUsername = useRef("")
-    const elId = useRef("")
+    const elLastname = useRef("")
     // const elConPassword = useRef("")
-
     const handleSecurity = (evt) => {
         evt.preventDefault()
 
         const formData = new FormData()
 
-        formData.append("email", elEmail.current.value)
-        formData.append("id", elId.current.value)
+        formData.append("phone", elPhone.current.value)
+        formData.append("lastname", elLastname.current.value)
         formData.append("username", elUsername.current.value)
 
         axios.put(`https://travel.iprogrammer.uz/accounts/users/me/`, formData, {
@@ -45,7 +50,20 @@ export const Cabinet = () => {
             },
         })
             .then(res => res.json())
-            .then((data) => setTravel(data))
+            .then((data) => setMe(data))
+            .catch(err => console.log(err))
+        
+    }, [])
+
+    useEffect(() => {
+        fetch(`https://travel.iprogrammer.uz/order/all/`, {
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": "token " + window.localStorage.getItem("token",)
+            },
+        })
+            .then(res => res.json())
+            .then((data) => setOrder(data))
             .catch(err => console.log(err))
         
     }, [])
@@ -63,10 +81,10 @@ export const Cabinet = () => {
                                     <input className="form__input" ref={elUsername} type="text" defaultValue={me.username} />
                                 </li>
                                 <li className="form__item">
-                                    <input className="form__input" ref={elId} type="text" defaultValue={me.id} />
+                                    <input className="form__input" ref={elPhone} type="text" defaultValue={me.phone} />
                                 </li>
                                 <li className="form__item">
-                                    <input className="form__input" ref={elUsername} type="text" defaultValue={me.email} />
+                                    <input className="form__input" ref={elLastname} type="text" defaultValue={me.first_name} />
                                 </li>
                             </ul>
                            <div className="text-center mt-3">
@@ -74,35 +92,12 @@ export const Cabinet = () => {
                            </div>
                         </form>
                     </div>
-                    <div className="row row2 mt-4">
-                        <h2>Buyurtmalaringiz</h2>
-                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-primary border">
-                            <p className="text-center text-white p-3">Nomi</p>
-                        </div>
-                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-light border">
-                            <p className="text-center text-primary p-3">Bu yerga nomi yoziladi</p>
-                        </div>
-                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-primary border">
-                            <p className="text-center text-white p-3">Sanasi</p>
-                        </div>
-                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-light border">
-                            <p className="text-center text-primary p-3">Bu yerga sanasi yoziladi</p>
-                        </div>
-                    </div>
-                    <div className="row row2 mt-3">
-                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-primary border">
-                            <p className="text-center text-white p-3">Narxi</p>
-                        </div>
-                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-light border">
-                            <p className="text-center text-primary p-3">Bu yerga narxi yoziladi</p>
-                        </div>
-                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-primary border">
-                            <p className="text-center text-white p-3">Buyurtmani ko'rish</p>
-                        </div>
-                        <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-light border">
-                            <p className="text-center text-primary p-3">Buyurtmani ko'rish</p>
-                        </div>
-                    </div>
+                    {order.length && order.map(e => (
+                        <>
+                            <OrderAll key={e.id} item={e} />
+
+                        </>
+                    ))}
                 </div>
             </div>
         </>

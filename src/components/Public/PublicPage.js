@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Link, Route, Routes } from "react-router-dom"
 import { About } from "../About/About"
 import { Footer } from "../Footer/Footer"
 import { Header } from "../Header/Header"
@@ -21,8 +21,10 @@ export const PublicPage = () => {
                 <Route path="/travel" element={<Travel />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/cabinet" element={<h1>EEE ro'yxatdan o'tsangiz bo'lmaydimi</h1>} />
-                <Route path="/:title" element={<h1>EEE ro'yxatdan o'tsangiz bo'lmaydimi</h1>} />
+                <Route path="/cabinet" element={<h1>EEE ro'yxatdan o'tsangiz bo'lmaydimi <Link to="/sign-up">Ro'yxatdan o'tish</Link></h1>} />
+                <Route path="/travel/:id/travel/:id" element={<h1>EEE ro'yxatdan o'tsangiz bo'lmaydimi <Link to="/sign-up">Ro'yxatdan o'tish</Link></h1>} />
+                <Route path="/travel/travel/:id/travel/:id" element={<h1>EEE ro'yxatdan o'tsangiz bo'lmaydimi <Link to="/sign-up">Ro'yxatdan o'tish</Link></h1>} />
+                <Route path="/:title" element={<h1>EEE ro'yxatdan o'tsangiz bo'lmaydimi <Link to="/sign-up">Ro'yxatdan o'tish</Link></h1>} />
             </Routes>
             <Footer />
         </>

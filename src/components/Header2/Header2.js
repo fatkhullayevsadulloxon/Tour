@@ -3,6 +3,7 @@ import rasm1 from "../../assets/images/1.png"
 import rasm2 from "../../assets/images/2.png"
 import rasm3 from "../../assets/images/3.png"
 import { Link, NavLink } from "react-router-dom"
+import { Korzina } from "../korzina/Korzina"
 
 export const Header2 = () => {
     return (
@@ -62,6 +63,9 @@ export const Header2 = () => {
                                                         ? "active d-inline-block"
                                                         : "text-decoration-none"
                                                 } to="/cabinet" href="#contact">Profil</NavLink></li>
+                                                <li>
+                                                    <Korzina/>
+                                                </li>
                                             </ul>
                                         </nav>
                                     </div>

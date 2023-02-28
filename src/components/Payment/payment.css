@@ -74,6 +74,7 @@
 }
 @media only screen and (max-width: 1172px) {
     .flex-list{
-        display: block  ;
+        display: block ;
+        /* margin-left: 500px !important; */
     }
 }

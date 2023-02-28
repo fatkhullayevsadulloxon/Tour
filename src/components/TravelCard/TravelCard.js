@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom"
+import { json, Link } from "react-router-dom"
 
 
 export const TravelCard = ({item}) => {
+    const btnId = item.id
+    const handleBtn = () => {
+        if (btnId === item.id) {
+            const korzina = window.localStorage.setItem("korzina", JSON.stringify(item))
+        }
+    }
 
     return  (
         <>
@@ -11,7 +17,7 @@ export const TravelCard = ({item}) => {
                         <h3>{item.name}</h3>
                         <p>Price: {item.price}$</p>
                         <div class="read-more">
-                            <a class="btn-read" href="#!">Band qilib qo'yish</a>
+                        <a onClick={handleBtn} class="btn-read" dataset-btn-id={btnId} href="#!">Band qilib qo'yish</a>
                         </div>
                     </div>
                 </Link>

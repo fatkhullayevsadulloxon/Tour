@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const korzina = JSON.parse(window.localStorage.getItem("korzina"))
+// const korzina = JSON.parse(window.localStorage.getItem("korzina"))
 
 export const Korzina = () => {
     return (

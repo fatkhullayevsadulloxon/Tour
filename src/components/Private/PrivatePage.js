@@ -13,14 +13,6 @@ import { SingleTravel } from "../SingleTravel/SingleTravel"
 import { Travel } from "../Travel/Travel"
 export const PrivatePage = () => {
 
-    const localCheck = window.localStorage.getItem("check")
-
-    if (localCheck === "false") {
-        alert("Siz to'lov qilmadingiz❗❗")
-    } else if (localCheck === "true") {
-        alert("Siz to'lov qildingiz✅")
-    }
-
     return (
 
 

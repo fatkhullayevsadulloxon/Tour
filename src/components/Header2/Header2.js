@@ -4,8 +4,20 @@ import rasm2 from "../../assets/images/2.png"
 import rasm3 from "../../assets/images/3.png"
 import { Link, NavLink } from "react-router-dom"
 import { Korzina } from "../korzina/Korzina"
+import { useEffect, useState } from "react"
 
 export const Header2 = () => {
+
+    const [travel, setTravel] = useState({})
+
+    useEffect(() => {
+        fetch("https://travel.iprogrammer.uz/services/all/",)
+            .then(res => res.json())
+            .then((data) => setTravel(data))
+            .catch(err => console.log(err))
+
+    }, [])
+
     return (
         <>
             <header>
@@ -64,7 +76,14 @@ export const Header2 = () => {
                                                         : "text-decoration-none"
                                                 } to="/cabinet" href="#contact">Profil</NavLink></li>
                                                 <li>
-                                                    <Korzina/>
+                                                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        Savatcha
+                                                    </button>
+                                                    {travel.length && travel.map(e => (
+                                                        <>
+                                                            <Korzina key={e.id} item={e} />
+                                                        </>
+                                                    ))}
                                                 </li>
                                             </ul>
                                         </nav>

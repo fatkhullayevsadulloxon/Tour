@@ -1,4 +1,4 @@
-.register__form input {
+.payment-input {
     display: block;
     margin: 0 auto;
     margin-top: 20px;
@@ -15,7 +15,7 @@
     display: flex;
 }
 
-.select {
+.select-payment {
     display: block;
     margin: 0 auto;
     margin-top: 20px;
@@ -32,12 +32,12 @@
     padding-left: 10px;
 }
 
-.register__form input:focus {
+.payment-input:focus {
     border: 1px solid blue;
     transition: all 0.2s;
 }
 
-.register__form input::placeholder {
+.payment-input::placeholder {
     padding-left: 20px;
 }
 
@@ -63,13 +63,13 @@
     }
 }
 @media only screen and (max-width: 405px) {
-    .register__form input{
+    .payment-input{
         width: 250px !important;
-        margin-left: -50px !important;
+        margin-left: -80px !important;
     }
-    .select{
+    .select-payment{
         width: 250px !important;
-        margin-left: -50px !important;
+        margin-left: -80px !important;
     }
 }
 @media only screen and (max-width: 1172px) {

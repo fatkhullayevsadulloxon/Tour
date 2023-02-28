@@ -1,4 +1,4 @@
-.register__form input{
+.form-input{
     display: block;
     margin: 0 auto;
     margin-top: 20px;
@@ -9,12 +9,12 @@
     border: 1px solid transparent;
     transition: all 0.4s;
 }
-.register__form input:focus{
+.form-input:focus{
     border: 1px solid blue;
     transition: all 0.2s;
 }
 
-.register__form input::placeholder{
+.form-input::placeholder{
     padding-left: 20px;
 }
 
@@ -34,8 +34,27 @@
     color: #13aba6;
 }
 
-@media only screen and (max-width: 526px)  {
-        .start-btn{
-            padding: 6px 120px;
-        }
+@media only screen and (max-width: 526px) {
+    .start-btn {
+        padding: 6px 120px;
+    }
+}
+
+@media only screen and (max-width: 405px) {
+    .form-input {
+        width: 250px !important;
+        /* margin-left: 50px !important; */
+    }
+
+    .select {
+        width: 250px !important;
+        /* margin-left: 50px !important; */
+    }
+}
+
+@media only screen and (max-width: 1172px) {
+    .flex-list {
+        display: block;
+        /* margin-left: 500px !important; */
+    }
 }

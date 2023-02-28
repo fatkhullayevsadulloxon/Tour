@@ -125,8 +125,8 @@ export const Payment = () => {
                                             <h3 className="text-center pt-5">Buyurtma qilish</h3>
                                             <form className="register__form">
                                                 <input defaultValue={data.id} ref={elService} required type="hidden" placeholder="service" />
-                                                <input ref={elUserCount} required type="number" placeholder="Yo'lovchi soni" />
-                                                <select ref={elPayment} className="select">
+                                                <input className="payment-input" ref={elUserCount} required type="number" placeholder="Yo'lovchi soni" />
+                                                <select ref={elPayment} className="select-payment">
                                                     <option value="Naqd">Naqd To'lov</option>
                                                     <option value="Payme">Payme</option>
                                                 </select>
@@ -143,13 +143,13 @@ export const Payment = () => {
                                     <div className="register__right bg-light mx-auto mt-5">
                                         <div className="p-5 ms-5 me-5">
                                             <form className="register__form">
-                                                <input ref={elFirstName} required type="text" placeholder="Ismingiz" />
-                                                <input ref={elLastName} required type="text" placeholder="Familyangiz" />
-                                                <input ref={elAddress} required type="text" placeholder="Address" />
-                                                <input defaultValue={+998} ref={elPhone} required type="number" placeholder="Phone" />
-                                                <input ref={elEmail} type="email" placeholder="Email" />
-                                                <input ref={elDate} required type="date" placeholder="Tu'gilgan sana" />
-                                                <select ref={elGender} className="select">
+                                                <input className="payment-input" ref={elFirstName} required type="text" placeholder="Ismingiz" />
+                                                <input className="payment-input" ref={elLastName} required type="text" placeholder="Familyangiz" />
+                                                <input className="payment-input" ref={elAddress} required type="text" placeholder="Address" />
+                                                <input className="payment-input" defaultValue={+998} ref={elPhone} required type="number" placeholder="Phone" />
+                                                <input className="payment-input" ref={elEmail} type="email" placeholder="Email" />
+                                                <input className="payment-input" ref={elDate} required type="date" placeholder="Tu'gilgan sana" />
+                                                <select ref={elGender} className="select-payment">
                                                     <option value="Erkak">Erkak</option>
                                                     <option value="Ayol">Ayol</option>
                                                 </select>

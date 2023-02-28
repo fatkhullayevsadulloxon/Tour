@@ -18,6 +18,18 @@
     padding-bottom: 2px;
     padding-bottom: 27px;
 }
+.footer .Follow h1 {
+    color: #fff;
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-width: 1px;
+    display: inline-block;
+    padding-bottom: 2px;
+    padding-bottom: 27px;
+    position: absolute;
+}
 
 .footer span {
     font-size: 17px;
@@ -115,6 +127,13 @@ ul.location_icon span {
 
 .copyright a:hover {
     color: #15cfe5;
+}
+
+@media only screen and(max-width: 777px) {
+    .copyright{
+        margin-top: 20px !important;
+        padding-top: 20px !important;
+    }
 }
 
 /*--------------------------------------------------------------------- File Name: responsive.css ---------------------------------------------------------------------*/

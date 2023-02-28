@@ -56,10 +56,10 @@ export const SignUp = () => {
                             <h3 className="text-center pt-5">Ro'yxatdan o'tish</h3>
                             <p className="text-center">Ro'yxatdan o'tganmisiz <Link to="/login"><strong> Kirish</strong></Link></p>
                             <form onSubmit={hanldeForm} className="register__form">
-                                <input ref={elUserName} type="text" placeholder="Username" />
-                                <input ref={elFirstName} type="text" placeholder="First Name" />
-                                <input ref={elPhone} defaultValue={+998} type="number" placeholder="Phone" />
-                                <input ref={elPassword} type="text" placeholder="Password" />
+                                <input className="form-input" ref={elUserName} type="text" placeholder="Username" />
+                                <input className="form-input" ref={elFirstName} type="text" placeholder="First Name" />
+                                <input className="form-input" ref={elPhone} defaultValue={+998} type="number" placeholder="Phone" />
+                                <input className="form-input" ref={elPassword} type="text" placeholder="Password" />
                                 <div className="text-center pb-5 mt-4">
                                     <button type="submit" className="start-btn">Next step</button>
                                 </div>

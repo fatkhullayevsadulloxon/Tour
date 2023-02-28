@@ -17,47 +17,21 @@ export const Footer = () => {
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                                 <div class="Follow">
-                                    <h3>CONTACT US</h3>
-                                    <span>123 Second Street Fifth <br/>Avenue,<br/>
-                                        Manhattan, New York<br/>
-                                            +987 654 3210</span>
+                                    <h3>Bog'lanish</h3>
+                                    <span>Farg'ona viloyati<br/>Beshariq tumani,<br/>
+<br/>
+                                        +998 93 648 80 06</span>
                                     </div>
                                     </div>
                                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                                             <div class="Follow">
-                                                <h3>ADDITIONAL LINKS</h3>
-                                                <ul class="link">
-                                                    <li> <a href="#">About us</a></li>
-                                                    <li> <a href="#">Terms and conditions</a></li>
-                                                    <li> <a href="#"> Privacy policy</a></li>
-                                                    <li> <a href="#">News</a></li>
-                                                    <li> <a href="#"> Contact us</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                            <div class="Follow">
-                                                <h3> Contact</h3>
-                                                <form id="kontakt">
-                                                    <div class="row">
-                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                                            <input name="name" class="Newsletter" placeholder="Name" type="text"/>
-                                                        </div>
-                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                                            <input name="email" class="Newsletter" placeholder="Email" type="text"/>
-                                                        </div>
-                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                                            <textarea name="text" class="textarea" placeholder="comment" type="text">Comment</textarea>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <button class="Subscribe">Submit</button>
+                                    <h1>USHBU SAHIFA "MIRBADALOV MMM" MCHJ GA TEGISHLI</h1>   
                                             </div>
                                         </div>
                                 </div>
-                                <div class="copyright">
+                                <div class="copyright mt-5">
                                     <div class="container">
-                                        <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
+                                <p>Copyright 2019 Sayt yaratuvchisi <a href="https://t.me/Tbtuzofficial">TBT group</a></p>
                                     </div>
                                 </div>
                             </div>

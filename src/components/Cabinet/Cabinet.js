@@ -92,6 +92,7 @@ export const Cabinet = ({ data }) => {
                            </div>
                         </form>
                     </div>
+                    <h2>Buyurtmalaringiz</h2>
                     {order.length && order.map(e => (
                         <>
                             <OrderAll key={e.id} item={e} />

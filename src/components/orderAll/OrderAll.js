@@ -20,7 +20,6 @@ export const OrderAll = ({item}) => {
     return (
         <>
             <div className="row row2 mt-4">
-                <h2>Buyurtmalaringiz</h2>
                 <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-primary border">
                     <p className="text-center text-white p-3">Nomi</p>
                 </div>

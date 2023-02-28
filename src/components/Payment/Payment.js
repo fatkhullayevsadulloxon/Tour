@@ -78,7 +78,11 @@ export const Payment = () => {
             }
 
         axios.post(`https://travel.iprogrammer.uz/payme/check/${localData}/`)
-                .then((data) => console.log(data.data.res))
+                .then((data) => {
+                    if(data.data.res !== undefined) {
+                        window.localStorage.setItem("check", data.data.res)
+                    }
+                })
                 .catch((err) => console.log(err))
         
 

@@ -46,11 +46,22 @@ export const Payment = () => {
         formdata.append("gmail", elEmail.current.value)
         formdata.append("birth_day", elDate.current.value)
         formdata.append("gender", elGender.current.value)
-        formdata.append("amount", elPaymeCheck.current.value)
+        formdata.append("user_count", elUserCount.current.value)
+        if (elPayment.current.value === "Payme"){
+            formdata.append("pay_id", window.localStorage.getItem("id"))
+        } else {
+
+        }
+
+        const formData2 = new FormData()
+
+        formData2.append("service", elService.current.value)
+        formData2.append("user_count", elUserCount.current.value)
+
 
         axios
             .post(
-                "https://travel.iprogrammer.uz/payme/create/", formdata, {
+                "https://travel.iprogrammer.uz/payme/create/", formData2,  {
                 headers: {
                     "Authorization": "token " + window.localStorage.getItem("token",)
                 }
@@ -60,7 +71,7 @@ export const Payment = () => {
                  
                 if (data.data.pay_id !== undefined) {
                     window.localStorage.setItem("id", data.data.pay_id)
-                    // window.location.reload(true)
+                    
                 } 
 
                 if(data.data.pay_url !== undefined){
@@ -68,13 +79,13 @@ export const Payment = () => {
                 } 
 
                 if(elPayment.current.value === "Payme") {
-                    navigate("/payme")
+                    // navigate("/payme")
                 }
             })
             .catch((err) => console.log(err));
              if (elPayment.current.value === "Naqd") {
-                    navigate('/cabinet')
-                    window.location.reload(true)
+                    // navigate('/cabinet')
+                    // window.location.reload(true)
             }
 
         axios.post(`https://travel.iprogrammer.uz/payme/check/${localData}/`)
@@ -94,9 +105,7 @@ export const Payment = () => {
                     }
                 } 
                  )
-            .then((data) => {
-               
-            })
+            .then((data) => {})
             .catch((err) => console.log(err));
             if(elUserCount.current.value === ""){
                 alert("Iltimos yo'lovchi sonini kiriting")

@@ -2,6 +2,16 @@ import { useEffect, useState } from "react"
 
 
 export const OrderAll = ({item}) => {
+    const check = window.localStorage.getItem("check")
+
+
+        if(check === "false"){
+            window.localStorage.setItem("buyurtma", "siz to'lov qilmagansiz ")
+        } else if(check === "true"){
+            window.localStorage.setItem("buyurtma", "siz to'lov qilgansiz")
+        }
+
+        const checkData = window.localStorage.getItem("buyurtma")
 
     const [order, setOrder] = useState({})
 
@@ -44,7 +54,7 @@ export const OrderAll = ({item}) => {
                     <p className="text-center text-white p-3">Buyurtmani ko'rish</p>
                 </div>
                 <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-light border">
-                    <p className="text-center text-primary p-3">Buyurtmani ko'rish</p>
+                    <p className="text-center text-primary p-3">{checkData}</p>
                 </div>
             </div>
         </>

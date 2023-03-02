@@ -1,4 +1,8 @@
 import "./footer.css"
+import faceBook from "../../assets/icon/facebook.png"
+import Twitter from "../../assets/icon/Twitter.png"
+import linkedin from "../../assets/icon/linkedin.png"
+import instagram from "../../assets/icon/instagram.png"
 
 export const Footer = () => {
     return (
@@ -9,10 +13,10 @@ export const Footer = () => {
                         <div class="row pdn-top-30">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <ul class="location_icon">
-                                    <li> <a href="#"><img src="icon/facebook.png"/></a></li>
-                                    <li> <a href="#"><img src="icon/Twitter.png"/></a></li>
-                                    <li> <a href="#"><img src="icon/linkedin.png"/></a></li>
-                                    <li> <a href="#"><img src="icon/instagram.png"/></a></li>
+                                    <li> <a href="#"><img src={faceBook}/></a></li>
+                                    <li> <a href="#"><img src={Twitter}/></a></li>
+                                    <li> <a href="#"><img src={linkedin}/></a></li>
+                                    <li> <a href="#"><img src={instagram}/></a></li>
                                 </ul>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">

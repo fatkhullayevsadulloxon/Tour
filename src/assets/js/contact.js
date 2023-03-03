@@ -3,7 +3,7 @@ const CHAT_ID = "-1001434361962";
 const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 const form = document.getElementById("kontakt");
 form.addEventListener("submit", function (e) {
-//   e.preventDefault();
+  //   e.preventDefault();
   if (!this.name.value) {
     this.name.classList.add("input-red");
   } else if (!this.phone.value) {
@@ -27,5 +27,4 @@ form.addEventListener("submit", function (e) {
     this.name.classList.remove("input-red");
     this.phone.classList.remove("input-red");
   }
-  console.log("ok");
 });

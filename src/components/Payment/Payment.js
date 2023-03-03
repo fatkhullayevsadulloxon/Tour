@@ -17,26 +17,20 @@ export const Payment = () => {
     const elDate = useRef("")
     const elGender = useRef("")
     const elPaymeCheck = useRef("")
-    
+
     const navigate = useNavigate()
     const { id } = useParams()
     const [data, setData] = useState({})
 
-    useEffect(() => {
-        fetch(`https://travel.iprogrammer.uz/services/get/${id}`)
-            .then(res => res.json())
-            .then((data) => setData(data))
-            .catch(err => console.log(err))
 
-    }, [])
     const localData = window.localStorage.getItem("id")
-    
 
-    const hanldeForm = (evt) => {
+
+    const hanldeForm = async (evt) => {
         evt.preventDefault()
         const formdata = new FormData()
 
-        formdata.append("service", elService.current.value)
+        formdata.append("service", id)
         formdata.append("user_count", elUserCount.current.value)
         formdata.append("payment_type", elPayment.current.value)
         formdata.append("first_name", elFirstName.current.value)
@@ -47,85 +41,85 @@ export const Payment = () => {
         formdata.append("birth_day", elDate.current.value)
         formdata.append("gender", elGender.current.value)
         formdata.append("user_count", elUserCount.current.value)
-        if (elPayment.current.value === "Payme"){
-            formdata.append("pay_id", window.localStorage.getItem("id"))
-        } else {
-
-        }
-
-        const formData2 = new FormData()
-
-        formData2.append("service", elService.current.value)
-        formData2.append("user_count", elUserCount.current.value)
 
 
-        axios
-            .post(
-                "https://travel.iprogrammer.uz/payme/create/", formData2,  {
+        if (elPayment.current.value === "Payme") {
+            const formData2 = new FormData()
+
+            formData2.append("service", id)
+            formData2.append("user_count", elUserCount.current.value)
+
+            let data1 = await axios.post(
+                "https://travel.iprogrammer.uz/payme/create/", formData2, {
                 headers: {
                     "Authorization": "token " + window.localStorage.getItem("token",)
                 }
             }
             )
-            .then((data) => {
-                 
-                if (data.data.pay_id !== undefined) {
-                    window.localStorage.setItem("id", data.data.pay_id)
-                    
-                } 
+            console.log(data1.data.pay_id);
 
-                if(data.data.pay_url !== undefined){
-                    window.localStorage.setItem("payurl", data.data.pay_url)
-                } 
+            if (data1.data.pay_id !== undefined) {
+                window.localStorage.setItem("id", data1.data.pay_id)
+                formdata.append("pay_id", data1.data.pay_id)
 
-                if(elPayment.current.value === "Payme") {
-                    // navigate("/payme")
-                }
-            })
-            .catch((err) => console.log(err));
-             if (elPayment.current.value === "Naqd") {
-                    // navigate('/cabinet')
-                    // window.location.reload(true)
             }
 
+            if (data1.data.pay_url !== undefined) {
+                window.localStorage.setItem("payurl", data1.data.pay_url)
+            }
+
+            if (elPayment.current.value === "Payme") {
+                window.location.replace("/payme")
+            }
+        };  
+        // .then((data) => {
+
+
+        // })
+        // .catch((err) => console.log(err));
+         if (elPayment.current.value === "Naqd") {
+                window.location.replace("/cabinet")
+        }
+
         axios.post(`https://travel.iprogrammer.uz/payme/check/${localData}/`)
-                .then((data) => {
-                    if(data.data.res !== undefined) {
-                        window.localStorage.setItem("check", data.data.res)
-                    }
-                })
-                .catch((err) => console.log(err))
-        
+            .then((data) => {
+                if (data.data.res !== undefined) {
+                    window.localStorage.setItem("check", data.data.res)
+                }
+            })
+            .catch((err) => console.log(err))
+
 
         axios
             .post(
                 "https://travel.iprogrammer.uz/order/create/", formdata, {
-                    headers: {
-                        "Authorization": "token " + window.localStorage.getItem("token",)
-                    }
-                } 
-                 )
-            .then((data) => {})
+                headers: {
+                    "Authorization": "token " + window.localStorage.getItem("token",)
+                }
+            }
+            )
+            .then((data) => { })
             .catch((err) => console.log(err));
-            if(elUserCount.current.value === ""){
-                alert("Iltimos yo'lovchi sonini kiriting")
-            } else if(elFirstName.current.value === "") {
-                alert("Iltimos ismingizni kiriting")
-            } else if (elLastName.current.value === "") {
-                alert("Iltimos familyangizni kiriting")
-            } else if (elAddress.current.value === "") {
-                alert("Iltimos manzilingizni kiriting")
-            } else if (elPhone.current.value < 11) {
-                alert("Telefon raqam to'liq kiritilmadi")
-            } else if (elDate.current.value === "") {
-                alert("Iltimos tug'ilgan sanangizni kiriting")
-    }}
+        if (elUserCount.current.value === "") {
+            alert("Iltimos yo'lovchi sonini kiriting")
+        } else if (elFirstName.current.value === "") {
+            alert("Iltimos ismingizni kiriting")
+        } else if (elLastName.current.value === "") {
+            alert("Iltimos familyangizni kiriting")
+        } else if (elAddress.current.value === "") {
+            alert("Iltimos manzilingizni kiriting")
+        } else if (elPhone.current.value < 11) {
+            alert("Telefon raqam to'liq kiritilmadi")
+        } else if (elDate.current.value === "") {
+            alert("Iltimos tug'ilgan sanangizni kiriting")
+        }
+    }
 
     return (
         <>
             <div className="container">
                 <form onSubmit={hanldeForm} className="">
-                  <div className="flex-list">
+                    <div className="flex-list">
                         <div className="register-page">
                             <div className="container">
                                 <div className="register">
@@ -133,7 +127,6 @@ export const Payment = () => {
                                         <div className="p-5 ms-5 me-5">
                                             <h3 className="text-center pt-5">Buyurtma qilish</h3>
                                             <form className="register__form">
-                                                <input defaultValue={data.id} ref={elService} required type="hidden" placeholder="service" />
                                                 <input className="payment-input" ref={elUserCount} required type="number" placeholder="Yo'lovchi soni" />
                                                 <select ref={elPayment} className="select-payment">
                                                     <option value="Naqd">Naqd To'lov</option>
@@ -168,11 +161,11 @@ export const Payment = () => {
                                 </div>
                             </div>
                         </div>
-                  </div>
+                    </div>
                     <div className="text-center pb-5 mt-4">
                         <button type="submit" className="start-btn">Next step</button>
                     </div>
-               </form>
+                </form>
             </div>
         </>
     )

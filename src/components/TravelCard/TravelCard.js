@@ -15,7 +15,7 @@ export const TravelCard = ({item}) => {
                     <div class="traveling-box">
                         <i><img src={item.img} alt="icon" width={100} height={100}/></i>
                         <h3>{item.name}</h3>
-                        <p>Price: {item.price}$</p>
+                        <p>Price: {item.price}</p>
                         <div class="read-more">
                         <a onClick={handleBtn} class="btn-read" dataset-btn-id={btnId} href="#!">Band qilib qo'yish</a>
                         </div>

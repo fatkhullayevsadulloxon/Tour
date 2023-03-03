@@ -39,8 +39,8 @@ export const SignUp = () => {
         } else if (elFirstName.current.value === "") {
     alert("Iltimos ism kiriting")
 } else if (elPassword.current.value >= 8) {
-    navigate('/login')
-    window.location.reload(true)
+    // navigate('/login')
+    // window.location.reload(true)
 } else if (elPassword.current.value <= 8) {
     alert("Parol 8ta raqamdan kam bo'lmasligi zarur")
 } else if (elPhone.current.value < 11){

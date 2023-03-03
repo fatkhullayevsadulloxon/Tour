@@ -5,9 +5,8 @@ import "./cabinet.css"
 
 const localId = window.localStorage.getItem("localId")
 export const Cabinet = ({ data }) => {
-    console.log(data);
-    
-    const [travel, setTravel] =  useState({})
+
+    const [travel, setTravel] = useState({})
     const [me, setMe] = useState({})
     const [order, setOrder] = useState({})
     const [servis, setServis] = useState({})
@@ -30,7 +29,7 @@ export const Cabinet = ({ data }) => {
             headers: {
                 "Authorization": "token " + window.localStorage.getItem("token",)
             }
-        }).then(data => console.log(data)).catch(err => console.log(err))
+        }).then(data => {}).catch(err => console.log(err))
     }
 
     useEffect(() => {
@@ -52,7 +51,7 @@ export const Cabinet = ({ data }) => {
             .then(res => res.json())
             .then((data) => setMe(data))
             .catch(err => console.log(err))
-        
+
     }, [])
 
     useEffect(() => {
@@ -63,10 +62,29 @@ export const Cabinet = ({ data }) => {
             },
         })
             .then(res => res.json())
-            .then((data) => setOrder(data))
+            .then((data) => {
+                setOrder(data);
+            })
             .catch(err => console.log(err))
-        
+
     }, [])
+
+    setTimeout(() => {
+        if (Object.keys(order).length !== 0) {
+            order.map(e => {
+                if (e.is_pay != true && e.pay_id != 'null') {
+
+                    axios.post(`https://travel.iprogrammer.uz/payme/check/${e.pay_id}/`)
+                        .then((data) => {
+                            if (data.data.res == "true") {
+                                window.location.reload()
+                            }
+                        })
+                        .catch((err) => console.log(err))
+                }
+            });
+        }
+    }, 2000);
 
     return (
         <>
@@ -87,17 +105,20 @@ export const Cabinet = ({ data }) => {
                                     <input className="form__input" ref={elLastname} type="text" defaultValue={me.first_name} />
                                 </li>
                             </ul>
-                           <div className="text-center mt-3">
+                            <div className="text-center mt-3">
                                 <button className="start-btn">O'zgartirish</button>
-                           </div>
+                            </div>
                         </form>
                     </div>
                     <h2>Buyurtmalaringiz</h2>
                     {order.length && order.map(e => (
+
                         <>
                             <OrderAll key={e.id} item={e} />
 
                         </>
+
+
                     ))}
                 </div>
             </div>
